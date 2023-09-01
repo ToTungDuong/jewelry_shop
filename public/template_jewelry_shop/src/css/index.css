@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Dancing+Script:wght@400;500;600;700&family=Lato:wght@100;300;400;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap");
+* {
+  font-family: "Lato", sans-serif;
+}
+
+.text_color_title {
+  color: #9c1137;
+}
+.text_color_gray {
+  color: #958f86;
+}
+.slogan {
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+}
+.bg_1 {
+  background-color: #9c1137;
+}
+.bg_2 {
+  background-color: #f6f3ee;
+}
+.color_navlink {
+  color: rgba(0, 0, 0, 0.6);
+}
+.home {
+  background: url("../img/hero.png") no-repeat center center / cover;
+}
+
+.title {
+  font-size: 20px;
+}
+.title_home {
+  font-family: "Playfair Display", serif;
+  font-size: 96px;
+}
+.home_infor {
+  font-size: 24px;
+}
+.btn_big {
+  color: white;
+  padding: 20px 76px 20px 76px;
+  transition: 0.4s;
+  font-size: 24px;
+}
+.btn_big:hover {
+  border: 1px solid #9c1137;
+  color: #9c1137;
+}
+.btn_view_all {
+  padding: 13px 63px 13px 63px;
+  font-size: 24px;
+  transition: 0.4s;
+  color: white;
+  background: #9c1137;
+}
+.btn_main {
+  background: transparent;
+  color: #9c1137;
+  border: 1px solid #9c1137;
+}
+.btn_main:hover {
+  background: #9c1137;
+  color: #ffffff;
+}
+.btn_view_all:hover {
+  background: transparent;
+  color: #9c1137;
+  border: 1px solid #9c1137;
+}
+.carousel-item {
+  height: 100vh;
+  min-height: 100px;
+}
+.w-100 {
+  height: 100vh;
+}
+
+.active {
+  color: #9c1137;
+}
+
+.nav-link {
+  background-color: #fff;
+}
+
+.page-link.active {
+  background-color: #fff;
+}
+
+.card {
+  border: none;
+}
+.card:hover {
+  border: 1px solid #9c1137;
+}
+.card .card-img-top {
+  height: 300px;
+}
+.h-90 {
+  height: 90%;
+}
+.mb-6 {
+  margin-bottom: 70px;
+}
+.card .card-img-new {
+  height: 424px;
+}
+.price_saled {
+  font-size: 16px;
+}
+.cost {
+  font-size: 14px;
+}
+
+.card_collection span {
+  font-size: 15px;
+}
+
+.card_collection_title {
+  font-family: "Corben", cursive;
+  font-size: 36px;
+}
+
+.must_have h4 {
+  font-size: 48px;
+}
+
+.service_title h5 {
+  font-size: 24px;
+}
+
+.service_title p {
+  font-size: 20px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .carousel-caption {
+    bottom: 70px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-caption {
+    bottom: 55px;
+  }
+  .carousel-caption h4 {
+    font-size: 32px;
+  }
+  .carousel-caption h1 {
+    font-size: 42px;
+  }
+  .btn_shop_now {
+    padding: 10px 15px;
+  }
+  .collection_item {
+    margin-top: 40px;
+  }
+  .must_have h4 {
+    font-size: 38px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 387px) {
+  .collection_item {
+    margin-top: 60px;
+  }
+  .card_collection span {
+    font-size: 15px;
+  }
+
+  .card_collection_title {
+    font-family: "Corben", cursive;
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 443px) {
+  .collection img {
+    width: calc(100%-200px);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .service_item {
+    text-align: center;
+  }
+}

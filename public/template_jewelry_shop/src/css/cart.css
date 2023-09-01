@@ -1,0 +1,11 @@
+@media only screen and (max-width: 505px) {
+  h5 {
+    font-size: 13px;
+  }
+  th {
+    font-size: 13px;
+  }
+  p {
+    font-size: 10px;
+  }
+}

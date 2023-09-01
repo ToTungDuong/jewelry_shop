@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/cart.css" />
+
+    <script src="bootstrap.bundle.min.js"></script>
+    <!-- include owl carousel Min.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- include owl carousel theme -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Cart</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="alert_top alert bg_1">
+          <div class="container">
+            <div class="row text-light">
+              <div class="col-4">
+                <img src="../img/logo_light.png" class="img-fluid" alt="" />
+              </div>
+              <div
+                class="slogan col-4 text-center d-flex justify-content-center align-items-center"
+              >
+                Quality and Reputation
+              </div>
+              <div
+                class="nav_right col-4 d-flex align-items-center justify-content-center"
+              >
+                <ul class="d-flex">
+                  <li class="list-unstyled px-1">
+                    <a href=""><img src="../img/user-light.svg" alt="" /></a>
+                  </li>
+                  <li class="list-unstyled px-1">
+                    <a href=""><img src="../img/heart-light.svg" alt="" /></a>
+                  </li>
+                  <li class="list-unstyled px-1">
+                    <a href=""
+                      ><img src="../img/shopping-bag_light.png" alt=""
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 color_navlink">
+                <li class="nav-item px-3">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >HOME</a
+                  >
+                </li>
+                <li class="nav-item px-3">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#top_product"
+                    >TOP PRODUCT
+                  </a>
+                </li>
+                <li class="nav-item px-3">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#new_arrivals"
+                    >NEW ARRIVALS</a
+                  >
+                </li>
+                <li class="nav-item px-3">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#collection"
+                    >COLLECTIONS</a
+                  >
+                </li>
+                <li class="nav-item px-3">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#category"
+                    >CATEGORY
+                  </a>
+                </li>
+                <li class="nav-item px-3">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#musthave"
+                    >MUST HAVE
+                  </a>
+                </li>
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-search" type="submit">
+                    SEARCH
+                  </button>
+                </form>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <main>
+        <div class="container px-5">
+          <div class="title_main_product text-center slogan">
+            <h2 class="slogan fs-1 py-5">Cart</h2>
+          </div>
+
+          <div class="container table-responsive py-5">
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">PRODUCT</th>
+                  <th scope="col"></th>
+                  <th scope="col">QUANTITY</th>
+                  <th scope="col">TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <img
+                      class="img-fluid"
+                      style="width: 200px; height: 200px"
+                      src="../img/image 1.svg"
+                      alt=""
+                    />
+                  </th>
+                  <td>
+                    <h5>GOLDEN CLEO - <span>YELLOW SAPPHIRE</span></h5>
+                    <p>XS</p>
+                    <p>$22.00</p>
+                  </td>
+                  <td>
+                    <div class="quantity">
+                      <div
+                        class="btn-group border"
+                        role="group"
+                        aria-label="Counter buttons"
+                      >
+                        <button id="decrementBtn" class="btn decrementBtn">
+                          -
+                        </button>
+                        <button id="counterBtn" class="btn counterBtn">
+                          0
+                        </button>
+                        <button id="incrementBtn" class="btn incrementBtn">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                  <td>$22.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <img
+                      class="img-fluid"
+                      style="width: 200px; height: 200px"
+                      src="../img/image 1.svg"
+                      alt=""
+                    />
+                  </th>
+                  <td>
+                    <h5>GOLDEN CLEO - <span>YELLOW SAPPHIRE</span></h5>
+                    <p>XS</p>
+                    <p>$22.00</p>
+                  </td>
+                  <td>
+                    <div class="quantity">
+                      <div
+                        class="btn-group border"
+                        role="group"
+                        aria-label="Counter buttons"
+                      >
+                        <button id="decrementBtn" class="btn decrementBtn">
+                          -
+                        </button>
+                        <button id="counterBtn" class="btn counterBtn">
+                          0
+                        </button>
+                        <button id="incrementBtn" class="btn incrementBtn">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                  <td>$22.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <img
+                      class="img-fluid"
+                      style="width: 200px; height: 200px"
+                      src="../img/image 2.svg"
+                      alt=""
+                    />
+                  </th>
+                  <td>
+                    <h5>GOLDEN CLEO - <span>YELLOW SAPPHIRE</span></h5>
+                    <p>XS</p>
+                    <p>$22.00</p>
+                  </td>
+                  <td>
+                    <div class="quantity">
+                      <div
+                        class="btn-group border"
+                        role="group"
+                        aria-label="Counter buttons"
+                      >
+                        <button id="decrementBtn" class="btn decrementBtn">
+                          -
+                        </button>
+                        <button id="counterBtn" class="btn counterBtn">
+                          0
+                        </button>
+                        <button id="incrementBtn" class="btn incrementBtn">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                  <td>$22.00</td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td class="py-5">TOTAL BILL : <span>$100.00</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="btn_pay d-flex justify-content-center justify-content-md-end py-5"
+          >
+            <button class="btn_big bg_1 text-light border-0">Pay Now</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer class="py-5 bg_2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <img src="../img/logo.png" alt="" />
+          </div>
+          <div class="col-lg-3">
+            <h5 class="fw-bold">Contact Us</h5>
+            <p>TEXT: (090) 123-EIIA</p>
+            <p>Email:example@domain.com</p>
+          </div>
+          <div class="col-lg-3">
+            <h5 class="fw-bold">Address</h5>
+            <p>685 Market Street San Francisco, CA 94105, US</p>
+          </div>
+          <div class="col-lg-3">
+            <h5 class="fw-bold">Social Newwork</h5>
+            <ul class="d-flex">
+              <li class="list-unstyled px-1">
+                <a href=""><img src="../img/ings.png" alt="" /></a>
+              </li>
+              <li class="list-unstyled px-1">
+                <a href=""><img src="../img/fb.png" alt="" /></a>
+              </li>
+              <li class="list-unstyled px-1">
+                <a href=""><img src="../img/twiter.png" alt="" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

@@ -27,19 +27,7 @@
                 <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="card w-100">
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="card-title">Projects of the Month</h5>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <select class="form-select b-0">
-                                            <option selected="">January</option>
-                                            <option value="1">February</option>
-                                            <option value="2">March</option>
-                                            <option value="3">April</option>
-                                        </select>
-                                    </div>
-                                </div>
+
                                 <div class="table-responsive mt-3 ">
                                     <table class="table vm no-th-brd pro-of-month">
                                         <thead>

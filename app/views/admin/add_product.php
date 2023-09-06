@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputPassword4" class="form-label">Price</label>
-                        <input type="text" name="product_price" class="form-control" id="inputPassword4">
+                        <input type="number" name="product_price" class="form-control" id="inputPassword4">
                     </div>
                     <div class="col-md-4">
                         <label for="inputPassword4" class="form-label">Quantity</label>
@@ -65,6 +65,26 @@
                         <label for="inputAddress2" class="form-label">Description</label>
                         <textarea name="product_desc" id="" cols="160" rows="5"></textarea>
                     </div>
+                    <?php if (!empty($alerts)): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($alerts as $alert): ?>
+                                <li><?php echo $alert; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($errors)): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?php echo $error; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
 
                     <div class="col-12">
                     <input type="submit" class="waves-effect waves-light btn-info hidden-md-down text-white" value="Add Product" />

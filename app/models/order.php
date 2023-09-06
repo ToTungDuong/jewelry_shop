@@ -83,6 +83,7 @@ class Order{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
 }
 
 

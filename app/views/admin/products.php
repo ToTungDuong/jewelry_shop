@@ -32,7 +32,7 @@
                                         <h5 class="card-title">Sort By : </h5>
                                     </div>
                                     <a class = "ms-2" href="?controller=product&action=sortPriceDesc"> Price: Max - Min |</a>
-                                    <a class = "ms-2" href="?controller=product&action=sortPriceDesc"> Price: Min - Max |</a>
+                                    <a class = "ms-2" href="?controller=product&action=sortPriceAsc"> Price: Min - Max |</a>
 
 
                                 </div>

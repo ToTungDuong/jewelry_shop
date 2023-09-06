@@ -9,7 +9,7 @@ require_once('app/models/category.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP; 
 use PHPMailer\PHPMailer\Exception;
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 
 session_start();
@@ -163,6 +163,9 @@ class AuthController extends BaseController
         $message .= "Thank you for registering at our website.\r\n";
         $message .= "Please click the following link to confirm your registration:\r\n";
         $message .= "http://localhost/jewelry_shop/app/views/auth/confirm.php?token=$verify_token";
+        // host
+        // $message .= "https://ellajewelryshop.000webhostapp/app/views/auth/confirm.php?token=$verify_token";
+
         $headers = "From: your_email@example.com";
   
         $mail = new PHPMailer();

@@ -13,14 +13,21 @@ class ProductController extends BaseController
   private $productModel;
   private $categoryModel;
   private $productSizeModel;
+  private $products; // Class property
+  private $categories; // Class property
+  private $sizes; // Class property
 
   function __construct()
   {
-    $this->folder = 'admin';
-    $this->productModel = new Product();
-    $this->categoryModel = new Category();
-    $this->productSizeModel = new ProductSize();
+      $this->folder = 'admin';
+      $this->productModel = new Product();
+      $this->categoryModel = new Category();
+      $this->productSizeModel = new ProductSize();
 
+      // Initialize the class properties with data
+      $this->products = $this->productModel->all();
+      $this->categories = $this->categoryModel->all();
+      $this->sizes = $this->productSizeModel->all();
   }
 
   public function index($page)
@@ -37,44 +44,55 @@ class ProductController extends BaseController
 
   public function viewAdd()
   {
-    $products = $this->productModel->all();
-    $categories = $this->categoryModel->all();
-    $sizes = $this->productSizeModel->all();
-
-    $data = array('products' => $products, 'categories' => $categories, 'sizes' => $sizes);
+    $data = array('products' => $this->products, 'categories' => $this->categories, 'sizes' => $this->sizes);
     $this->renderAdmin('add_product', $data);
+    
   }
 
   public function add(){
+    $alerts = []; 
+    $errors = [];
     $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     $folder = "public/images/products/" . $filename;
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $product_name = $_POST['product_name'];
-      $product_price = $_POST['product_price'];
-      $product_quantity = $_POST['product_quantity'];
-      $product_size = $_POST['product_size'];
-      $category_name = $_POST['category_name'];
-      $product_desc = $_POST['product_desc'];
-      $this->productModel->addProduct($product_name, $product_size, $product_desc, $product_price, $filename, $category_name, $product_quantity);
-      move_uploaded_file($tempname, $folder);
-      $this->viewAdd();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $product_name = $_POST['product_name'];
+        $product_price = $_POST['product_price'];
+        $product_quantity = $_POST['product_quantity'];
+        $product_size = $_POST['product_size'];
+        $category_name = $_POST['category_name'];
+        $product_desc = $_POST['product_desc'];
+        
+        if (empty($product_name) || empty($product_price) || empty($product_quantity) || empty($product_size) || empty($category_name) || empty($product_desc)) {
+          $errors[] = "Input can't empty !";
+        } else {
+          $this->productModel->addProduct($product_name, $product_size, $product_desc, $product_price, $filename, $category_name, $product_quantity);
+          move_uploaded_file($tempname, $folder);
+          $alerts[] = 'Add product successfully !';
+        }
+
     }
-  }
+
+
+    // You can return the same view as in viewAdd with the appropriate data
+    $data = array('products' => $this->products, 'categories' => $this->categories, 'sizes' => $this->sizes, 'alerts' => $alerts, 'errors' => $errors);
+    $this->renderAdmin('add_product', $data);
+}
+
 
   public function viewEdit(){
-    $categories = $this->categoryModel->all();
-    $sizes = $this->productSizeModel->all();
     if(isset($_GET['id'])){
       $id = $_GET['id'];
       $productByID = $this->productModel->getProductById($id);
-      $data = array('productByID' => $productByID, 'categories' => $categories, 'sizes' => $sizes);
+      $data = array('productByID' => $productByID, 'categories' => $this->categories, 'sizes' => $this->sizes);
       $this->renderAdmin('edit_product', $data);
     }
   }
 
   public function update(){
-    
+    $alerts = []; 
+    $errors = [];
     $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     $folder = "public/images/products/" . $filename;
@@ -94,7 +112,12 @@ class ProductController extends BaseController
       else{
         $this->productModel->updateWithOutImg($id, $product_name, $product_size, $product_desc, $product_price, $category_name, $product_quantity);
       }
-      $this->index();
+      if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $page = (int)$_GET['page'];
+      } else {
+          $page = 1; // Default to page 1 if 'page' is not set or not numeric
+      }
+      $this->index($page);
       }
   }
 
@@ -102,7 +125,13 @@ class ProductController extends BaseController
     if(isset($_GET['id'])){
       $id = $_GET['id'];
       $this->productModel->deleteProduct($id);
-      $this->index();
+      if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $page = (int)$_GET['page'];
+      } else {
+          $page = 1; // Default to page 1 if 'page' is not set or not numeric
+      }
+
+      $this->index($page);
     }
   }
 
@@ -111,6 +140,17 @@ class ProductController extends BaseController
     $start = ($page - 1) * $limit;
     $totalRows = $this->productModel->getTotalRows();
     $rows = $this->productModel->getProductsByPriceDesc($start, $limit);
+    $totalPages = ceil($totalRows / $limit);
+
+    $data = array('rows' => $rows, 'totalPages' => $totalPages);
+    $this->renderAdmin('products', $data);
+  }
+
+  public function sortPriceAsc($page){
+    $limit = 10; 
+    $start = ($page - 1) * $limit;
+    $totalRows = $this->productModel->getTotalRows();
+    $rows = $this->productModel->getProductsByPriceAsc($start, $limit);
     $totalPages = ceil($totalRows / $limit);
 
     $data = array('rows' => $rows, 'totalPages' => $totalPages);

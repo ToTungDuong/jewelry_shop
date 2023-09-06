@@ -25,9 +25,7 @@
                         <div class="card w-100">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <div>
-                                        <h5 class="card-title">Projects of the Month</h5>
-                                    </div>
+
                                     <div class="ms-auto">
                                         <select class="form-select b-0">
                                             <option selected="">January</option>
@@ -65,7 +63,7 @@
                                                 <td><?= $order['order_status'] ?></td>
                                                 
                                                 <td>
-                                                <a href="?controller=order&action=detailOrder&order_id=<?= $order['order_id'] ?>" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down text-white"> Detail </a></td>
+                                                <a href="?controller=order&action=detailOrder&order_id=<?= $order['order_id'] ?>" class="btn waves-effect waves-light btn btn-info pull-right text-white"> Detail </a></td>
                                                 </tr>
                                         <?php        
                                             }

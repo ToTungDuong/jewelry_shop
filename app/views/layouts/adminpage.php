@@ -55,18 +55,7 @@
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
 
-                        <!-- Logo text -->
-                        <span>
-                            <!-- dark Logo text -->
-                            <a href="?controller=admin&action=index">
-                                <img src="public/template_jewelry_shop/img/logo.png" alt="homepage" class="dark-logo" />
-                            </a>
-                        </span>
-                    </a>
-                </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -96,10 +85,10 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#"
-                                id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="public/admin-wrap-lite-master/assets/images/users/1.jpg" alt="user" class="" /> <span
-                                    class="hidden-md-down">Mark Sanders &nbsp;</span> </a>
+                            <div class="text-center mt-2 me-2">
+                                <a href="?controller=admin&action=logout"
+                                    class="btn waves-effect waves-light btn-info text-white">Log out</a>
+                            </div>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -141,10 +130,7 @@
                                     class="fa fa-question-circle"></i><span class="hide-menu">Customer</span></a>
                         </li>
                     </ul>
-                    <div class="text-center mt-4">
-                        <a href="?controller=admin&action=logout"
-                            class="btn waves-effect waves-light btn-info hidden-md-down text-white">Log out</a>
-                    </div>
+
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>

@@ -81,10 +81,11 @@
             <p>Forgot password?</p>
             <!-- Display error messages -->
             <?php if (!empty($errors)): ?>
-              <div class="alert alert-danger">
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" >
                 <ul>
                   <?php foreach ($errors as $error): ?>
                     <li><?php echo $error; ?></li>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   <?php endforeach; ?>
                 </ul>
               </div>

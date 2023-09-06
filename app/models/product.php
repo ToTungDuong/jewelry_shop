@@ -266,5 +266,18 @@ class Product
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
-}
+  }
+
+  
+  public function getProductsByPriceAsc($start, $limit) {
+    $db = DB::getInstance();
+    $query = "SELECT p.*, c.category_name, s.size
+    FROM Products p
+    JOIN Categories c ON p.category_id = c.category_id
+    JOIN product_sizes s ON p.product_size_id = s.product_size_id ORDER BY product_price ASC LIMIT $start, $limit";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+  }
 }

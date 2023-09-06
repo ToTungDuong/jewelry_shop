@@ -77,8 +77,8 @@ class CartController extends BaseController{
         
         $success = $this->productModel->createOrder($customer_id, $total_amount, $items);
         if ($success) {
-            echo 'ok';
             unset($_SESSION['cart']);
+            $this->render('paynow');
         } else {
             // Order failed, show error message to user or redirect
         }

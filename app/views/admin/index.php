@@ -10,6 +10,11 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+                <a href="?controller=product&action=index" class = "py-5 px-5 btn waves-effect waves-light btn btn-info text-white">Products</a>
+                <a href="?controller=category&action=index" class = "py-5 px-5 btn waves-effect waves-light btn btn-info text-white">Categories</a>
+                <a href="?controller=order&action=index" class = "py-5 px-5 btn waves-effect waves-light btn btn-info text-white">Orders</a>
+                <a href="?controller=product&action=index" class = "py-5 px-5 btn waves-effect waves-light btn btn-info text-white">Customers</a>
+
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->

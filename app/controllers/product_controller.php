@@ -118,6 +118,7 @@ class ProductController extends BaseController
           $page = 1; // Default to page 1 if 'page' is not set or not numeric
       }
       $this->index($page);
+      
       }
   }
 

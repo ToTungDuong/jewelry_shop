@@ -136,7 +136,6 @@ class AuthController extends BaseController
       }
       else if(in_array($customer_email, $emailData)){
         $errors[] = "Email already exists !";
-
       }
       if(empty($customer_password)){
         $errors[] = 'Password is required.';

@@ -48,6 +48,7 @@
               <div class="mt-5">
               <input type="submit" value='ADD TO CART'>
               </div>
+
             </div>
           </form>
 

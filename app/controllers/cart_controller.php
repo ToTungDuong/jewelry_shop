@@ -2,7 +2,6 @@
 require_once('app/controllers/base_controller.php');
 require_once('app/models/product.php');
 
-
 class CartController extends BaseController{
     private $productModel;
     public function __construct()
@@ -15,6 +14,8 @@ class CartController extends BaseController{
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
+            $errors = [];
+            $alerts = [];
             $product_id = $_GET['id'];
             $product_img = $_POST['product_img'];
             $product_name = $_POST['product_name'];
@@ -23,9 +24,14 @@ class CartController extends BaseController{
             $product_quantity = $_POST['product_quantity'];
             $dataProduct = $this->productModel->getProductById($product_id);
             $quantityProduct = $dataProduct['product_quantity'];
+
             if($product_quantity > $quantityProduct){
-                
+                $errors[] = 'Product quantity is not enought!';
             }
+            else if($product_size == 'Size: I need a ring sizer kit' || $product_quantity == null){
+                $errors[] = 'Please choose size and quantity!';
+            }
+
             else if (isset($_SESSION['cart'])) {
                 $found = false;
                 foreach ($_SESSION['cart'] as &$item) {
@@ -33,6 +39,8 @@ class CartController extends BaseController{
                         // Update quantity if same item and size is already in cart
                         $item['product_quantity'] += $product_quantity;
                         $found = true;
+                        $alerts[] = 'Product has been added to cart!';
+
                         break;
                     }
                 }
@@ -47,7 +55,10 @@ class CartController extends BaseController{
                         'product_size' => $product_size,
                         'product_quantity' => $product_quantity
                     );
+                    $alerts[] = 'Product has been added to cart!';
+
                     $_SESSION['cart'][] = $data;
+
                 }
             } else {
                 // Cart is empty, add the item
@@ -59,30 +70,43 @@ class CartController extends BaseController{
                     'product_size' => $product_size,
                     'product_quantity' => $product_quantity
                 );
+                $alerts[] = 'Product has been added to cart!';
                 $_SESSION['cart'][] = $data;
             }
+
+            $data = ['alerts' => $alerts,'errors' => $errors];
+
+            $this->render('cart', $data);
     
-            $this->render('cart');
         }
     }
 
     public function checkOut(){
         session_start();
         $customer_id = $_SESSION['userLoginStatus'];
-        $items = $_SESSION['cart'];
-        $total_amount = 0;
-        foreach ($_SESSION['cart'] as $item) {
-            $total_amount += $item['product_quantity'] * $item['product_price'];
-        }
+        $success = false; // Initialize $success to false
+        $errors = []; // Initialize $errors array
         
-        $success = $this->productModel->createOrder($customer_id, $total_amount, $items);
+        if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])){
+            $items = $_SESSION['cart'];
+            $total_amount = 0;
+            foreach ($_SESSION['cart'] as $item) {
+                $total_amount += $item['product_quantity'] * $item['product_price'];
+            }
+            $success = $this->productModel->createOrder($customer_id, $total_amount, $items);
+        }else{
+            $errors[] = 'Cart empty';
+        }
+    
         if ($success) {
             unset($_SESSION['cart']);
             $this->render('paynow');
         } else {
-            // Order failed, show error message to user or redirect
+            $data = ['errors' => $errors];
+            $this->render('cart', $data);
         }
     }
+    
     
 
     public function removeFromCart(){

@@ -7,7 +7,26 @@
           <div class="title_main_product text-center slogan">
             <h2 class="slogan fs-1 py-5">Cart</h2>
           </div>
-
+          <?php if (!empty($alerts)): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($alerts as $alert): ?>
+                                <li><?php echo $alert; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+          <?php if (!empty($errors)): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?php echo $error; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
           <div class="container table-responsive py-5">
             <table class="table table-hover">
               <thead class="thead-dark">

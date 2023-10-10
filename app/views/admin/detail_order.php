@@ -27,6 +27,8 @@
                 <div class="infor_order">
                     <h5 class = 'fw-bold'>Order ID: <span class = "fw-normal"><?= $orderByID['order_id'] ?></span></h5>
                     <h5 class = 'fw-bold'>Customer Name: <span class = "fw-normal"><?= $orderByID['customer_name'] ?></span></h5>
+                    <h5 class = 'fw-bold'>Customer Address: <span class = "fw-normal"><?= $orderByID['customer_address'] ?></span></h5>
+
                     <h5 class = 'fw-bold'>Date Order: <span class = "fw-normal"><?= $orderByID['order_date'] ?></span></h5>
                     <h5 class = 'fw-bold'>Status: <span class = "fw-normal"><?= $orderByID['order_status'] ?></span></h5>
 
@@ -91,9 +93,9 @@
                                         </tbody>
                                     </table>
                                 <div>
-                                <a href="?controller=order&action=cancel&order_id=<?= $orderByID['order_id']; ?>" class="ms-5 btn waves-effect waves-light btn btn-danger pull-right text-white" onclick="return confirm('Are you sure you want to cancel order?')"> Cancel </a>
-                                <a href="?controller=order&action=confirm&order_id=<?= $orderByID['order_id']; ?>"
-                                class="btn waves-effect waves-light btn btn-info pull-right text-white" onclick="return confirm('Are you sure you want to confirm order?')"> Confirm </a>
+                                <a href="#" class="ms-5 btn waves-effect waves-light btn btn-danger pull-right text-white" onclick="cancelOrder(<?php echo $orderByID['order_id']; ?>)"> Cancel </a>
+                                <a href="#" class="btn waves-effect waves-light btn btn-info pull-right text-white" onclick="confirmOrder(<?php echo $orderByID['order_id']; ?>)"> Confirm </a>
+
                                 </div>
 
                                 </div>
@@ -130,7 +132,3 @@
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->

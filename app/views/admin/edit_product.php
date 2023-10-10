@@ -17,7 +17,7 @@
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
-                <form class="row g-3" action='?controller=product&action=update' method='POST' enctype="multipart/form-data" >
+                <form id = "updateProductForm" class="row g-3" action='?controller=product&action=update' method='POST' enctype="multipart/form-data" >
                         <input type="hidden" name="product_id" class="form-control" value='<?=  $productByID['product_id'] ?>'>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Name</label>
@@ -63,12 +63,8 @@
                         <label for="inputAddress2" class="form-label">Description</label>
                         <textarea name="product_desc" id="" cols="160" rows="5"><?= $productByID['product_desc'] ?></textarea>
                     </div>
-
-                    <div class="col-12">
-                    <input onclick="return confirm('Are you sure you want to save?')" type="submit" class="waves-effect waves-light btn-info hidden-md-down text-white" value="Save" />
-
-                    </div>
-                </form>
+                    </form>
+                    <button onclick="confirmUpdateProduct(<?php echo $productByID['product_id']; ?>)" class="waves-effect waves-light btn-info hidden-md-down text-white">Save</button>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -90,3 +86,11 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script>
+    function confirmUpdateProduct(productId) {
+        showConfirmation("Are you sure you want to update this product?", function() {
+            // Execute the update product action here, e.g., submit a form
+            document.querySelector('#updateProductForm').submit(); // Replace with your form ID
+        });
+    }
+</script>

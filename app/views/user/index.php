@@ -394,7 +394,7 @@
               <div class="item px-3">
                 <div class="card btn cursor-pointer" >
                   <img
-                    src="public/template_jewelry_shop/img/Rectangle 22.png"
+                    src="public/images/categories/<?php echo $category['category_img'] ?>"
                     class="card-img-new img-fluid"
                     alt="..."
                   />

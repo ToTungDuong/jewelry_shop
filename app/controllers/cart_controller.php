@@ -84,27 +84,34 @@ class CartController extends BaseController{
     public function checkOut(){
         session_start();
         $customer_id = $_SESSION['userLoginStatus'];
-        $success = false; // Initialize $success to false
         $errors = []; // Initialize $errors array
-        
-        if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])){
+    
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             $items = $_SESSION['cart'];
             $total_amount = 0;
-            foreach ($_SESSION['cart'] as $item) {
+    
+            foreach ($items as $item) {
                 $total_amount += $item['product_quantity'] * $item['product_price'];
             }
+    
+            // Assuming that $this->productModel->createOrder() returns a boolean
             $success = $this->productModel->createOrder($customer_id, $total_amount, $items);
-        }else{
-            $errors[] = 'Cart empty';
+    
+            if ($success) {
+                // Order created successfully, unset the cart
+                unset($_SESSION['cart']);
+                $this->render('paynow');
+                return; // Stop further execution
+            } else {
+                $errors[] = 'Failed to create the order';
+            }
+        } else {
+            $errors[] = 'Cart is empty';
         }
     
-        if ($success) {
-            unset($_SESSION['cart']);
-            $this->render('paynow');
-        } else {
-            $data = ['errors' => $errors];
-            $this->render('cart', $data);
-        }
+        // Display errors and return to the cart page
+        $data = ['errors' => $errors];
+        $this->render('cart', $data);
     }
     
     

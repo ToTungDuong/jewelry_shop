@@ -34,6 +34,8 @@ class OrderController extends BaseController{
         $totalPages = ceil($totalOrders/$limit);
         $data = array('listOrders' => $listOrders, 'totalPages' => $totalPages);
         $this->renderAdmin('orders', $data);
+      echo '<script>showSuccessMessage("Order confirmed successfully.");</script>';
+
     }
 
     public function cancel($page) {
@@ -48,6 +50,8 @@ class OrderController extends BaseController{
         $totalPages = ceil($totalOrders/$limit);
         $data = array('listOrders' => $listOrders, 'totalPages' => $totalPages);
         $this->renderAdmin('orders', $data);
+      echo '<script>showSuccessMessage("Order canceled successfully.");</script>';
+
     }
 
     public function detailOrder(){

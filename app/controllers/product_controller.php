@@ -69,16 +69,16 @@ class ProductController extends BaseController
         } else {
           $this->productModel->addProduct($product_name, $product_size, $product_desc, $product_price, $filename, $category_name, $product_quantity);
           move_uploaded_file($tempname, $folder);
-          $alerts[] = 'Add product successfully !';
         }
-
+        
+      }
+      
+      
+      // You can return the same view as in viewAdd with the appropriate data
+      $data = array('products' => $this->products, 'categories' => $this->categories, 'sizes' => $this->sizes, 'alerts' => $alerts, 'errors' => $errors);
+      $this->renderAdmin('add_product', $data);
+      echo '<script>showSuccessMessage("Product inserted successfully.");</script>';
     }
-
-
-    // You can return the same view as in viewAdd with the appropriate data
-    $data = array('products' => $this->products, 'categories' => $this->categories, 'sizes' => $this->sizes, 'alerts' => $alerts, 'errors' => $errors);
-    $this->renderAdmin('add_product', $data);
-}
 
 
   public function viewEdit(){
@@ -118,7 +118,7 @@ class ProductController extends BaseController
           $page = 1; // Default to page 1 if 'page' is not set or not numeric
       }
       $this->index($page);
-      
+      echo '<script>showSuccessMessage("Product updated successfully.");</script>';
       }
   }
 
@@ -133,6 +133,7 @@ class ProductController extends BaseController
       }
 
       $this->index($page);
+      echo '<script>showSuccessMessage("Product deleted successfully.");</script>';
     }
   }
 
@@ -157,4 +158,18 @@ class ProductController extends BaseController
     $data = array('rows' => $rows, 'totalPages' => $totalPages);
     $this->renderAdmin('products', $data);
   }
+
+  public function search()
+{
+    $search_query = $_POST['search_query'];
+
+    // Perform a database query to search for products by name
+    $search_results = $this->productModel->searchByName($search_query);
+
+    // Pass the search results to the view
+    $data = array('search_results' => $search_results);
+
+    // Render a view to display the search results
+    $this->renderAdmin('search_results', $data);
+}
 }

@@ -16,8 +16,30 @@
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
                         <h3 class="text-themecolor">List Category</h3>
-
                     </div>
+
+                    <?php if (!empty($alerts)): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($alerts as $alert): ?>
+                                <li><?php echo $alert; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($errors)): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+                            <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?php echo $error; ?></li>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    
+
                     <div class="col-md-7 align-self-center">
                         <a href="?controller=category&action=viewAdd"
                             class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down text-white"> Add </a>
@@ -34,22 +56,25 @@
                                             <tr>
                                                 <!-- colspan = '2' - chieu rong cua cot -->
                                                 <th>ID</th>
+                                                <th>Image</th>
                                                 <th>Name</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                foreach ($categories as $category) {
+                                                foreach ($rows as $category) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $category['category_id'] ?></td>
-
+                                                <td style="width:50px; height:50px;"><img class = 'img-fluid' src="public/images/categories/<?php echo $category['category_img'] ?>" alt=""></td>
                                                 <td>
                                                     <h6><?php echo $category['category_name'] ?></h6>
                                                 </td>
                                                 <td>
                                                     <a class = 'mx-1' href="?controller=category&action=viewEdit&id=<?= $category['category_id'] ?>"><img src="public/admin-wrap-lite-master/assets/images/pencil-square.png" alt=""></a>
-                                                    <a class = 'mx-1' href="?controller=category&action=delete&id=<?= $category['category_id'] ?>"  onclick="return confirm('Are you sure you want to delete?')"><img src="public/admin-wrap-lite-master/assets/images/trash.png" alt=""></a>
+                                                    <a class='mx-1' href="#" onclick="confirmDeleteCategory(<?php echo $category['category_id']; ?>)">
+                                            <img src="public/admin-wrap-lite-master/assets/images/trash.png" alt="">
+                                        </a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -58,6 +83,18 @@
                                         </tbody>
 
                                     </table>
+                                    <div>
+                            Page :
+                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <?php if ($_GET['action'] == 'sortPriceDesc'): ?>
+                            <a
+                                href="?controller=product&action=sortPriceDesc&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                            <?php else: ?>
+                            <a
+                                href="?controller=product&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                            <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
                                 </div>
                             </div>
                         </div>

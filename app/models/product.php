@@ -162,10 +162,13 @@ class Product
         $db = DB::getInstance();
         $db->beginTransaction();
 
+        // Define the order date (you can use the current date and time)
+        $order_date = date('Y-m-d H:i:s'); // Example format, adjust as needed
+
         $insertOrderQuery = "INSERT INTO orders (customer_id, order_date, total_amount) VALUES (:customer_id, :order_date, :total_amount)";
         $orderStmt = $db->prepare($insertOrderQuery);
         $orderStmt->bindParam(':customer_id', $customer_id);
-        $orderStmt->bindParam(':order_date', $order_date);
+        $orderStmt->bindParam(':order_date', $order_date); // Bind the order date
         $orderStmt->bindParam(':total_amount', $total_amount);
         $orderStmt->execute();
 
@@ -194,7 +197,8 @@ class Product
         $db->rollBack();
         return false;
     }
-  }
+}
+
 
   public function getTotalRows(){
     $db = DB::getInstance();
@@ -280,4 +284,21 @@ class Product
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
+
+  public function searchByName($search_query)
+{
+    $db = DB::getInstance();
+    $query = "SELECT p.*, c.category_name, s.size
+              FROM Products p
+              JOIN Categories c ON p.category_id = c.category_id
+              JOIN product_sizes s ON p.product_size_id = s.product_size_id
+              WHERE p.product_name LIKE :search_query";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':search_query', "%$search_query%", PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }

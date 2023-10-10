@@ -52,48 +52,7 @@
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
 
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item hidden-xs-down search-box"> <a
-                                class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i
-                                    class="fa fa-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a
-                                    class="srh-btn"><i class="fa fa-times"></i></a></form>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown u-pro">
-                            <div class="text-center mt-2 me-2">
-                                <a href="?controller=admin&action=logout"
-                                    class="btn waves-effect waves-light btn-info text-white">Log out</a>
-                            </div>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
-                        </li>
-                    </ul>
-                </div>
             </nav>
         </header>
         <!-- ============================================================== -->
@@ -130,6 +89,13 @@
                         <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i
                                     class="fa fa-question-circle"></i><span class="hide-menu">Customer</span></a>
                         </li>
+                        <li class="nav-item dropdown u-pro">
+                            <div class="text-center mt-2 me-2">
+                                <a href="?controller=admin&action=logout"
+                                    class="btn waves-effect waves-light btn-info text-white">Log out</a>
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+                        </li>
                     </ul>
 
                 </nav>
@@ -154,6 +120,9 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="public/admin-wrap-lite-master/assets/node_modules/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Bootstrap popper Core JavaScript -->
     <script src="public/admin-wrap-lite-master/assets/node_modules/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->

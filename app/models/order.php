@@ -66,7 +66,7 @@ class Order{
 
     public function getOrderByID($order_id){
         $db = DB::getInstance();
-        $query = "SELECT o.*, c.customer_name FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id WHERE order_id = :order_id";
+        $query = "SELECT o.*, c.customer_name, c.customer_address FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id WHERE order_id = :order_id";
         $stmt = $db->prepare($query);
         $stmt->bindValue(':order_id', $order_id);
         $stmt->execute();

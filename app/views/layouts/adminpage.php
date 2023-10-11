@@ -144,7 +144,7 @@
     <script src="public/admin-wrap-lite-master/assets/node_modules/c3-master/c3.min.js"></script>
     <!-- Chart JS -->
     <script src="public/admin-wrap-lite-master/html/js/dashboard1.js"></script>
-    <script src="public/js/admin/product.js"></script>
+    <script src="public/js/swal.js"></script>
     
 </body>
 

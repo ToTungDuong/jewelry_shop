@@ -84,6 +84,21 @@ class Order{
         return $result;
     }
 
+    public function searchOrder($search_query)
+    {
+        $db = DB::getInstance();
+        $query = "SELECT o.*, c.customer_name FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id
+                  WHERE o.order_id = :search_query";
+    
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':search_query', "$search_query", PDO::PARAM_STR);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+
 }
 
 

@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-6 ps-5">
             <div>
-              <form method="POST" action="?controller=cart&action=addToCart&id=<?= $productByID['product_id'] ?>">
+              <form id ="formAddToCart" method="POST" action="?controller=cart&action=addToCart&id=<?= $productByID['product_id'] ?>">
                 
               <input type="hidden" name='product_img' value='<?= $productByID['product_img'] ?>'>
                 <h4 class="name_product fw-bold"><?= $productByID['product_name'] ?></h4>
@@ -45,12 +45,13 @@
               </div>
               </div>
               
-              <div class="mt-5">
-              <input type="submit" value='ADD TO CART'>
-              </div>
+
 
             </div>
           </form>
+          <a class='btn waves-effect waves-light btn btn-info pull-right text-white my-3' href="#" onclick="confirmInsertProduct()">
+                      Add To Cart
+          </a>
 
             <div class="desc_product mt-4">
               <h5 class="fw-bold">Description:</h5>
@@ -131,3 +132,29 @@
 @include('partials/footer.php');
 ?>
 </div>
+<!-- <script>
+  // Add an event listener to the form submission
+  document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent the form from submitting immediately
+
+    // Use SweetAlert to display a notification
+    Swal.fire({
+      icon: 'success',
+      title: 'Product Added to Cart',
+      text: 'Your selected product has been added to the cart!',
+      showConfirmButton: false,
+      timer: 2000, // You can customize the timer as needed
+    });
+
+    // Now, you can submit the form using JavaScript after the SweetAlert is displayed
+    e.target.submit();
+  });
+</script> -->
+<script>
+    function confirmInsertProduct() {
+        showConfirmation("Are you sure you want to add this product?", function() {
+            // Execute the insert product action here, e.g., submit a form
+            document.querySelector('#formAddToCart').submit(); // Replace with your form ID
+        });
+    }
+</script>

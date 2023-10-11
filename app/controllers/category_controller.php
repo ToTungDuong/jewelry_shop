@@ -48,7 +48,10 @@ class CategoryController extends BaseController
         }
         $data = array( 'errors' => $errors);
         $this->renderAdmin('add_category', $data);
-      echo '<script>showSuccessMessage("Category inserted successfully.");</script>';
+        
+        if($errors == []){
+            echo '<script>showSuccessMessage("Category inserted successfully.");</script>';
+        }
 
     }
 

@@ -39,7 +39,6 @@ class CartController extends BaseController{
                         // Update quantity if same item and size is already in cart
                         $item['product_quantity'] += $product_quantity;
                         $found = true;
-                        $alerts[] = 'Product has been added to cart!';
 
                         break;
                     }
@@ -70,14 +69,15 @@ class CartController extends BaseController{
                     'product_size' => $product_size,
                     'product_quantity' => $product_quantity
                 );
-                $alerts[] = 'Product has been added to cart!';
                 $_SESSION['cart'][] = $data;
             }
 
-            $data = ['alerts' => $alerts,'errors' => $errors];
+            $data = ['errors' => $errors];
 
             $this->render('cart', $data);
-    
+            if($errors == []){
+                echo '<script>showSuccessMessage("Item added successfully.");</script>';
+              }
         }
     }
 
@@ -118,7 +118,6 @@ class CartController extends BaseController{
 
     public function removeFromCart(){
         session_start();
-
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $key => $product) {
                 if ($product['product_id'] === $_GET['id']) {
@@ -128,7 +127,7 @@ class CartController extends BaseController{
             }
         }
         $this->render('cart');
-
+        echo '<script>showSuccessMessage("Product remove successfully.");</script>';
     }
 }
 ?>

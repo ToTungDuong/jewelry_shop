@@ -54,7 +54,7 @@
 
 
         </form>
-        <button onclick="confirmUpdateCategory(<?php echo $categoryByID['category_id']; ?>)" class="waves-effect waves-light btn-info hidden-md-down text-white">Save</button>
+        <button onclick="confirmUpdateCategory(<?php echo $categoryByID['category_id']; ?>)" class="waves-effect waves-light btn-info hidden-md-down text-white my-4">Save</button>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->

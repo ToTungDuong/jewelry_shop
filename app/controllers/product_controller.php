@@ -77,7 +77,9 @@ class ProductController extends BaseController
       // You can return the same view as in viewAdd with the appropriate data
       $data = array('products' => $this->products, 'categories' => $this->categories, 'sizes' => $this->sizes, 'alerts' => $alerts, 'errors' => $errors);
       $this->renderAdmin('add_product', $data);
-      echo '<script>showSuccessMessage("Product inserted successfully.");</script>';
+      if($errors == []){
+        echo '<script>showSuccessMessage("Product inserted successfully.");</script>';
+      }
     }
 
 

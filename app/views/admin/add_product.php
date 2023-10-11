@@ -88,7 +88,7 @@
 
 
         </form>
-        <button onclick="confirmInsertProduct()" class="btn btn-success">Insert Product</button>
+        <button onclick="confirmInsertProduct()" class="waves-effect waves-light btn-info hidden-md-down text-white my-4">Insert Product</button>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->

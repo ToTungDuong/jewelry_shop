@@ -2,7 +2,9 @@
 * {
   font-family: "Lato", sans-serif;
 }
-
+.bg_main {
+  background-color: #9c1137;
+}
 .text_color_title {
   color: #9c1137;
 }

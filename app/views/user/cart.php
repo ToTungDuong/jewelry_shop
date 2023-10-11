@@ -63,7 +63,10 @@
                   </td>
                   <td>$<?php echo number_format($value['product_price'] * $value['product_quantity'], 2) ?></td>
                   <td>                                                    
-                    <a class = 'mx-1' href="?controller=cart&action=removeFromCart&id=<?= $value['product_id'] ?>"  onclick="return confirm('Are you sure you want to delete?')"><img src="public/admin-wrap-lite-master/assets/images/trash.png" alt=""></a>
+
+                    <a class='mx-1' href="#" onclick="confirmRemoveItemCart(<?php echo $value['product_id']; ?>)">
+                      <img src="public/admin-wrap-lite-master/assets/images/trash.png" alt="">
+                    </a>
                   </td>
                 </tr>
                 <?php
@@ -88,7 +91,7 @@
           <div
             class="btn_pay d-flex justify-content-center justify-content-md-end py-5"
           >
-            <a class="btn_big bg_1 text-light border-0" href = '?controller=cart&action=checkOut'>Pay Now</a>
+            <a class="btn_big bg_1 text-light border-0" href = '#' onclick="confirmCheckOut()">Pay Now</a>
           </div>
         </div>
       </main>
@@ -96,3 +99,11 @@
 @include('partials/footer.php');
 ?>
 </div>
+<script>
+    function confirmCheckOut() {
+        showConfirmation("Are you sure you want check out this order?", function() {
+            // Execute the insert product action here, e.g., submit a form
+            window.location.href = "?controller=cart&action=checkOut";
+        });
+    }
+</script>

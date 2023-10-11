@@ -84,17 +84,11 @@
 
                                     </table>
                                     <div>
-                            Page :
-                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            <?php if ($_GET['action'] == 'sortPriceDesc'): ?>
-                            <a
-                                href="?controller=product&action=sortPriceDesc&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            <?php else: ?>
-                            <a
-                                href="?controller=product&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            <?php endif; ?>
-                            <?php endfor; ?>
-                        </div>
+                                    Page :
+                                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                            <a href="?controller=category&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                        <?php endfor; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

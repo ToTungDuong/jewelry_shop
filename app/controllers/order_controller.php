@@ -63,6 +63,19 @@ class OrderController extends BaseController{
             $this->renderAdmin('detail_order', $data);
         }
     }
+    public function search()
+    {
+        $search_query = $_POST['search_query'];
+    
+        // Perform a database query to search for products by name
+        $search_results = $this->orderModel->searchOrder($search_query);
+    
+        // Pass the search results to the view
+        $data = array('search_results' => $search_results);
+    
+        // Render a view to display the search results
+        $this->renderAdmin('search_orders', $data);
+    }
 }
 
 

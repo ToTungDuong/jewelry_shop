@@ -14,6 +14,22 @@ function confirmDeleteProduct(id) {
     }
   });
 }
+function confirmRemoveItemCart(id) {
+  Swal.fire({
+    title: "Are you sure to remove this product?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#20aee3",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Redirect to the delete action with the product ID
+      window.location.href = "?controller=cart&action=removeFromCart&id=" + id;
+    }
+  });
+}
 function confirmOrder(id) {
   Swal.fire({
     title: "Are you sure to confirm order?",
@@ -60,6 +76,22 @@ function confirmDeleteCategory(id) {
     }
   });
 }
+
+// function confirmAddToCart(id) {
+//   Swal.fire({
+//     title: "Are you sure ?",
+//     text: "Item will be add to cart!",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#20aee3",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes, delete it!",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       // Redirect to the delete action with the product ID
+//     }
+//   });
+// }
 
 // Function to show a success message
 function showSuccessMessage(message) {

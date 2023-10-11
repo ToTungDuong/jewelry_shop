@@ -49,7 +49,7 @@
 
 
         </form>
-        <button onclick="confirmInsertCategory()" class="waves-effect waves-light btn-info hidden-md-down text-white">Add</button>
+        <button onclick="confirmInsertCategory()" class="waves-effect waves-light btn-info hidden-md-down text-white my-4">Add</button>
 
         <!-- ============================================================== -->
         <!-- End Container fluid  -->

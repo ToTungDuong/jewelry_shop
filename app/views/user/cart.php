@@ -91,7 +91,9 @@
           <div
             class="btn_pay d-flex justify-content-center justify-content-md-end py-5"
           >
-            <a class="btn_big bg_1 text-light border-0" href = '#' onclick="confirmCheckOut()">Pay Now</a>
+            <!-- <a class="btn_big bg_1 text-light border-0" href = '#' onclick="confirmCheckOut()">Pay Now</a> -->
+            <a class="btn_big bg_1 text-light border-0" href = '?controller=cart&action=checkOut' >Check Out</a>
+
           </div>
         </div>
       </main>
@@ -103,7 +105,7 @@
     function confirmCheckOut() {
         showConfirmation("Are you sure you want check out this order?", function() {
             // Execute the insert product action here, e.g., submit a form
-            window.location.href = "?controller=cart&action=checkOut";
+            window.location.href = "?controller=cart&action=orderNow";
         });
     }
 </script>

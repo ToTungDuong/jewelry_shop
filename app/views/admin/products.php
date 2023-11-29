@@ -91,16 +91,29 @@
                         </table>
 
                         <div>
-                            Page :
-                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            <?php if ($_GET['action'] == 'sortPriceDesc'): ?>
-                            <a
-                                href="?controller=product&action=sortPriceDesc&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            <?php else: ?>
-                            <a
-                                href="?controller=product&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            <?php endif; ?>
-                            <?php endfor; ?>
+                        <?php
+                            if (isset($_GET['page'])) {
+                            ?>
+                                Page : <?php echo $_GET['page'] ?>
+                            <?php
+                            }
+                            else {
+                            ?>
+                                Page : 1
+                            <?php
+                            }
+                        ?>
+                            <div>Move in :
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?> 
+                                <?php if ($_GET['action'] == 'sortPriceDesc'): ?>
+                                <a
+                                    href="?controller=product&action=sortPriceDesc&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                <?php else: ?>
+                                <a
+                                    href="?controller=product&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

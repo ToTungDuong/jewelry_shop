@@ -162,6 +162,8 @@ class AuthController extends BaseController
         $message .= "Thank you for registering at our website.\r\n";
         $message .= "Please click the following link to confirm your registration:\r\n";
         $message .= "http://localhost/jewelry_shop/app/views/auth/confirm.php?token=$verify_token";
+        // $message .= "https://tungduongsite.id.vn/app/views/auth/confirm.php?token=$verify_token";
+        
         // host
         // $message .= "https://ellajewelryshop.000webhostapp/app/views/auth/confirm.php?token=$verify_token";
 

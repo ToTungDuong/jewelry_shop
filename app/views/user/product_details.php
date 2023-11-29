@@ -49,7 +49,7 @@
 
             </div>
           </form>
-          <a class='btn waves-effect waves-light btn btn-info pull-right text-white my-3' href="#" onclick="confirmInsertProduct()">
+          <a class='btn waves-effect waves-light btn btn_big pull-right text-white my-3' href="#" onclick="confirmInsertProduct()">
                       Add To Cart
           </a>
 

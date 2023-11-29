@@ -63,13 +63,22 @@
                     >MUST HAVE
                   </a>
                 </li>
+
                 <?php
-                  if($_SESSION){
-                ?>
-                <li class="nav-item px-3">
-                  <a href="?controller=home&action=viewOrder"
-                  class="btn nav-link btn btn_main hidden-sm-down"> My Order </a>
-                </li>
+                if ($userLoginStatus) {
+                  ?>
+                  <li class="nav-item px-3">
+                    <a href="?controller=home&action=viewOrder"
+                    class="btn btn_orders hidden-sm-down"> My Order </a>
+                  </li>
+                <?php
+                }
+              else {
+                    ?>
+                  <li class="nav-item px-3">
+                    <a href="?controller=home&action=viewSearchOrder"
+                    class="btn btn_orders hidden-sm-down"> Search Order </a>
+                  </li>
                 <?php
                   }
                 ?>
@@ -201,18 +210,9 @@
                 <img src="public/images/products/<?= $ring['product_img'] ?>" class="card-img-top" alt="..." />
                 <div class="card-body text-center">
                   <h5 class="card-title"><?php echo $ring['product_name'] ?></h5>
-                  <?php
-                    if ($userLoginStatus) {
-                      ?>
-                        <a href="?controller=home&action=viewProductDetails&id=<?= $ring['product_id'] ?>" class="btn btn-outline-search">Shop Now</a>
-                      <?php
-                      }
-                    else {
-                      ?>
-                        <a href="?controller=auth&action=viewLogin" class="btn btn-outline-search">Shop Now</a>
-                    <?php
-                      }
-                    ?>
+
+                        <a href="?controller=home&action=viewProductDetails&id=<?= $ring['product_id'] ?>" class="btn btn_2 btn-outline-search">Shop Now</a>
+
                 </div>
               </div>
 
@@ -231,18 +231,9 @@
                 <img src="public/images/products/<?= $bracelet['product_img'] ?>" class="card-img-top" alt="..." />
                 <div class="card-body text-center">
                   <h5 class="card-title"><?php echo $bracelet['product_name'] ?></h5>
-                  <?php
-                    if ($userLoginStatus) {
-                      ?>
-                        <a href="?controller=home&action=viewProductDetails&id=<?= $bracelet['product_id'] ?>" class="btn btn-outline-search">Shop Now</a>
-                      <?php
-                      }
-                    else {
-                      ?>
-                        <a href="?controller=auth&action=viewLogin" class="btn btn-outline-search">Shop Now</a>
-                    <?php
-                      }
-                    ?>
+
+                        <a href="?controller=home&action=viewProductDetails&id=<?= $bracelet['product_id'] ?>" class="btn btn_2 btn-outline-search">Shop Now</a>
+
                 </div>
               </div>
             <?php
@@ -260,18 +251,9 @@
                 <img src="public/images/products/<?= $earring['product_img'] ?>" class="card-img-top" alt="..." />
                 <div class="card-body text-center">
                   <h5 class="card-title"><?php echo $earring['product_name'] ?></h5>
-                  <?php
-                    if ($userLoginStatus) {
-                      ?>
-                        <a href="?controller=home&action=viewProductDetails&id=<?= $earring['product_id'] ?>" class="btn btn-outline-search">Shop Now</a>
-                      <?php
-                      }
-                    else {
-                      ?>
-                        <a href="?controller=auth&action=viewLogin" class="btn btn-outline-search">Shop Now</a>
-                    <?php
-                      }
-                    ?>
+
+                        <a href="?controller=home&action=viewProductDetails&id=<?= $earring['product_id'] ?>" class="btn btn_2 btn-outline-search">Shop Now</a>
+
                 </div>
               </div>
 
@@ -309,20 +291,10 @@
                   </div>
                   <div class="card_footer pb-4 row">
                     <h5 class="card-title col-10"><?php echo $product_new['product_name'] ?></h5>
-                    <?php
-                    if ($userLoginStatus) {
-                      ?>
+
                         <a href="?controller=home&action=viewProductDetails&id=<?= $product_new['product_id'] ?>" class="col-2"><img src="public/template_jewelry_shop/img/shopping-bag.png" alt=""
                     /></a>
-                      <?php
-                      }
-                    else {
-                      ?>
-                        <a href="?controller=auth&action=viewLogin" class="col-2"><img src="public/template_jewelry_shop/img/shopping-bag.png" alt=""
-                    /></a>
-                    <?php
-                      }
-                    ?>
+
                   </div>
                 </div>
               </div>
@@ -334,7 +306,7 @@
 
             </div>
             <div class="new_arrivals_footer text-center pt-5">
-              <button class="btn btn_view_all">View All</button>
+              <button class="btn btn_big">View All</button>
             </div>
           </div>
         </section>
@@ -354,7 +326,7 @@
                     Birthday Collection
                   </h4>
                   <a href="#"
-                    ><button class="btn btn-outline-search mt-5">
+                    ><button class="btn btn_big mt-5">
                       Shop Now
                     </button></a
                   >
@@ -370,7 +342,7 @@
                   <span class="text_color_title">NEW COLLECTION</span>
                   <h4 class="card_collection_title mt-4">Summer Essentials</h4>
                   <a href="#"
-                    ><button class="btn btn-outline-search mt-5">
+                    ><button class="btn btn_big mt-5">
                       Shop Now
                     </button></a
                   >
@@ -417,7 +389,7 @@
 
             </div>
             <div class="featured_product_footer text-center pt-5">
-              <button class="btn btn_view_all">View All</button>
+              <button class="btn btn_big">View All</button>
             </div>
           </div>
         </section>

@@ -44,6 +44,17 @@ class Customer{
         return $result;
     }
 
+    public function getCustomerByID($customer_id){
+        $db = DB::getInstance();
+        $query = "SELECT * FROM customers WHERE customer_id = :customer_id";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':customer_id', $customer_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result;
+    }
+
     public function getCustomerByToken($verify_token)
     {
         $db = DB::getInstance();

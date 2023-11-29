@@ -1,13 +1,15 @@
 
 <?php
 $controllers = array(
-  'home' => ['index', 'viewCart','viewProduct', 'viewProductDetails','viewOrder', 'detailOrder','error'],
+  'home' => ['index', 'viewCart','viewProduct', 'viewProductDetails','viewOrder', 'detailOrder','viewSearchOrder','searchOrderGuest','detailOrderGuest','error'],
   'auth' => ['login','viewLogin','viewSignUp','logout','signup','error'],
   'admin' => ['index', 'logout'],
   'product' => ['index', 'viewAdd', 'add', 'delete', 'remove', 'viewEdit', 'update', 'sortPriceDesc', 'sortPriceAsc', 'search'],
   'category' => ['index', 'viewAdd', 'add', 'viewEdit', 'update', 'delete'],
-  'cart' => ['addToCart', 'removeFromCart', 'checkOut'],
+  'cart' => ['addToCart', 'removeFromCart', 'orderNowUser', 'checkOut', 'createGuestOrder'],
   'order' => ['index', 'confirm', 'cancel', 'detailOrder', 'search'],
+  'orderguest' => ['index', 'confirm', 'cancel', 'detailOrder', 'search'],
+
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi

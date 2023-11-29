@@ -197,7 +197,9 @@ class Product
         $db->rollBack();
         return false;
     }
-}
+  }
+
+  
 
 
   public function getTotalRows(){

@@ -4,12 +4,18 @@ require_once('app/models/product.php');
 require_once('app/models/category.php');
 require_once('app/models/product_size.php');
 require_once('app/models/order.php');
+require_once('app/models/guest.php');
+
+
 
 class OrderController extends BaseController{
     private $orderModel;
     function __construct(){
         $this->folder = 'admin';
         $this->orderModel = new Order();
+        $this->guestModel = new Guest();
+
+
     }
 
     public function index($page){
@@ -76,6 +82,8 @@ class OrderController extends BaseController{
         // Render a view to display the search results
         $this->renderAdmin('search_orders', $data);
     }
+
+
 }
 
 

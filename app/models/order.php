@@ -3,7 +3,7 @@
 class Order{
     public function getTotalOrders(){
         $db = DB::getInstance();
-        $query = "SELECT COUNT(*) as total FROM orders";
+        $query = "SELECT COUNT(*) as total FROM orders WHERE customer_id IS NOT NULL";
         $stmt = $db->prepare($query);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -12,7 +12,7 @@ class Order{
 
     public function getListOrders($start, $limit){
         $db = DB::getInstance();
-        $query ="SELECT o.*, c.customer_name FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id LIMIT $start, $limit";
+        $query ="SELECT o.order_id, o.customer_id,o.order_date, o.total_amount,o.order_status, c.customer_name FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id LIMIT $start, $limit";
         $stmt = $db->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -97,7 +97,8 @@ class Order{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    
+
+
 
 }
 

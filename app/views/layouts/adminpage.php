@@ -27,10 +27,13 @@
     <link href="public/admin-wrap-lite-master/assets/node_modules/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="public/admin-wrap-lite-master/html/css/style.css" rel="stylesheet">
+    <link href="public/admin-wrap-lite-master/assets/index.css" rel="stylesheet">
+
     <!-- Dashboard 1 Page CSS -->
     <link href="css/pages/dashboard1.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="public/admin-wrap-lite-master/html/css/default.css" id="theme" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -85,6 +88,9 @@
                         </li>
                         <li> <a class="waves-effect waves-dark" href="?controller=order&action=index" aria-expanded="false"><i
                                     class="fa fa-bookmark-o"></i><span class="hide-menu">Orders</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="?controller=orderguest&action=index" aria-expanded="false"><i
+                                    class="fa fa-bookmark-o"></i><span class="hide-menu">Orders Guest</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i
                                     class="fa fa-question-circle"></i><span class="hide-menu">Customer</span></a>
@@ -145,6 +151,8 @@
     <!-- Chart JS -->
     <script src="public/admin-wrap-lite-master/html/js/dashboard1.js"></script>
     <script src="public/js/swal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     
 </body>
 

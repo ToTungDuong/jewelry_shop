@@ -25,7 +25,7 @@
         <div class="product_list py-5">
           <div class="container">
             <div
-              class="row d-flex justify-content-center justify-content-xl-start column-gap-5 row-gap-5"
+              class="row d-flex justify-content-center justify-content-xl-start column-gap-4 row-gap-4"
             >
               <?php 
                 foreach($rowsByCategory as $rowByCategory){
@@ -36,21 +36,10 @@
                   <h5 class="card-title"><?= $rowByCategory['product_name'] ?></h5>
                   <p>$<?= $rowByCategory['product_price'] ?></p>
                   <div class="d-flex justify-content-around align-items-center">
-                  <?php
-                    if ($userLoginStatus) {
-                      ?>
-                        <a href="?controller=home&action=viewProductDetails&id=<?= $rowByCategory['product_id'] ?>" class="btn btn-outline-search">Shop Now</a>
-                      <?php
-                      }
-                    else {
-                      ?>
-                        <a href="?controller=auth&action=viewLogin" class="btn btn-outline-search">Shop Now</a>
-                    <?php
-                      }
-                    ?>
-                    <a href="" class="cursor-pointer fs-4"></a>
-                    <img class="" style="width: 27px ; height: 27px;" src="public/template_jewelry_shop/img/shopping-bag.png" alt=""
-                    /></a>
+
+                        <a href="?controller=home&action=viewProductDetails&id=<?= $rowByCategory['product_id'] ?>" class="btn btn-outline-search btn_2">Shop Now</a>
+
+
                   </div>
                 </div>
               </div>

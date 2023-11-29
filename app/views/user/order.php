@@ -29,7 +29,7 @@
                             <td>$<?= $order['total_amount'] ?></td>
                             <td><?= $order['order_status'] ?></td>
                             <td>
-                                <a href="?controller=home&action=detailOrder&order_id=<?= $order['order_id'] ?>" class="btn nav-link btn btn_main hidden-sm-down"> Detail </a></td>
+                                <a href="?controller=home&action=detailOrder&order_id=<?= $order['order_id'] ?>" class="btn nav-link btn btn_big hidden-sm-down"> Detail </a></td>
                         </tr>
                 <?php   
                         }

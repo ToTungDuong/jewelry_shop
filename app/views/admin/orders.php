@@ -26,7 +26,7 @@
                             <div class="card-body">
                             <form action="?controller=order&action=search" class="d-flex" method="POST">
                                 <div class="input-group rounded mt-2">
-                                    <input type="text" class="form-control rounded" name="search_query" placeholder="Search by name" aria-label="Search" aria-describedby="search-addon" />
+                                    <input type="text" class="form-control rounded" name="search_query" placeholder="Search by id order" aria-label="Search" aria-describedby="search-addon" />
 
                                 </div>
                                 <button type="submit" class="btn btn-info mt-2 text-light">Search</button>
@@ -69,10 +69,24 @@
 
                                     </table>
                                     <div>
-                                        Page :
-                                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                            <a href="?controller=order&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                                        <?php endfor; ?>
+                                    <?php
+                                    if (isset($_GET['page'])) {
+                                    ?>
+                                        Page : <?php echo $_GET['page'] ?>
+                                    <?php
+                                    }
+                                    else {
+                                    ?>
+                                        Page : 1
+                                    <?php
+                                    }
+                                    ?>
+                                        <div>
+                                            Move in :
+                                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                                <a href="?controller=order&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                            <?php endfor; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

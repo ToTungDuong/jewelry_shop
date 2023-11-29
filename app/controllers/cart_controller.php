@@ -1,6 +1,9 @@
 <?php
 require_once('app/controllers/base_controller.php');
 require_once('app/models/product.php');
+require_once('app/models/customer.php');
+require_once('app/models/guest.php');
+
 
 class CartController extends BaseController{
     private $productModel;
@@ -8,6 +11,9 @@ class CartController extends BaseController{
     {
         $this->folder = 'user';
         $this->productModel = new Product();
+        $this->customerModel = new Customer();
+        $this->guestModel = new Guest();
+
     }
 
     public function addToCart()
@@ -81,7 +87,7 @@ class CartController extends BaseController{
         }
     }
 
-    public function checkOut(){
+    public function orderNowUser(){
         session_start();
         $customer_id = $_SESSION['userLoginStatus'];
         $errors = []; // Initialize $errors array
@@ -129,5 +135,43 @@ class CartController extends BaseController{
         $this->render('cart');
         echo '<script>showSuccessMessage("Product remove successfully.");</script>';
     }
+
+    public function checkOut(){
+        session_start();
+        if(isset($_SESSION['userLoginStatus'])){
+            $customer_id = $_SESSION['userLoginStatus'];
+            $customer = $this->customerModel->getCustomerByID($customer_id);
+            $data = array('customer' => $customer);
+            $this->render('checkout', $data);
+        }
+        $this->render('checkout');
+    }
+
+    public function createGuestOrder() {
+        session_start();
+        $guest_name = $_POST['guest_name'];
+        $guest_email = $_POST['guest_email'];
+        $guest_phone = $_POST['guest_phone'];
+        $guest_address = $_POST['guest_address'];
+        $guest_id = session_id();
+        // // var_dump($_SESSION['cart']);
+        $items = $_SESSION['cart'];
+        $total_amount = 0;
+
+        foreach ($items as $item) {
+            $total_amount += $item['product_quantity'] * $item['product_price'];
+        }
+        $this->guestModel->createGuest($guest_id, $guest_name, $guest_email, $guest_phone, $guest_address);
+        $this->guestModel->createGuestOrder($guest_id, $total_amount, $items);
+        unset($_SESSION['cart']);
+        session_destroy();
+        setcookie(session_name(), '', time() - 3600, '/');
+        $this->render('guest_order_succes');
+
+
+        // Check if the order is placed by a registered customer or a guest.
+    }
+
+
 }
 ?>

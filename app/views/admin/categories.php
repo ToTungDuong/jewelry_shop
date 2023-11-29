@@ -84,10 +84,25 @@
 
                                     </table>
                                     <div>
-                                    Page :
+                                    <?php
+                                    if (isset($_GET['page'])) {
+                                    ?>
+                                        Page : <?php echo $_GET['page'] ?>
+                                    <?php
+                                    }
+                                    else {
+                                    ?>
+                                        Page : 1
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <div>
+                                        Move in :
                                         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                                             <a href="?controller=category&action=index&page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                         <?php endfor; ?>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

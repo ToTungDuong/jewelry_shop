@@ -2,15 +2,25 @@
 * {
   font-family: "Lato", sans-serif;
 }
+a {
+  text-decoration: none !important;
+}
+.nav-link {
+  color: #958f86 !important;
+}
+.nav-link:hover {
+  color: #9c1137 !important;
+}
 .bg_main {
   background-color: #9c1137;
 }
 .text_color_title {
   color: #9c1137;
 }
-.text_color_gray {
+/* .text_color_gray {
   color: #958f86;
-}
+} */
+
 .slogan {
   font-family: "Dancing Script", cursive;
   font-size: 25px;
@@ -39,36 +49,31 @@
   font-size: 24px;
 }
 .btn_big {
-  color: white;
+  color: white !important;
   padding: 20px 76px 20px 76px;
   transition: 0.4s;
   font-size: 24px;
+  background: #9c1137 !important;
+  border: 1px solid #ffffff !important;
+  transition: width 2s;
 }
 .btn_big:hover {
-  border: 1px solid #9c1137;
-  color: #9c1137;
+  border: 1px solid #9c1137 !important;
+  color: #9c1137 !important;
+  background: #ffffff !important;
 }
-.btn_view_all {
-  padding: 13px 63px 13px 63px;
-  font-size: 24px;
-  transition: 0.4s;
-  color: white;
-  background: #9c1137;
+.btn_orders {
+  color: #9c1137 !important;
+  border: 1px solid #9c1137 !important;
 }
-.btn_main {
-  background: transparent;
-  color: #9c1137;
-  border: 1px solid #9c1137;
+.btn_2 {
+  color: #9c1137 !important;
+  border: 1px solid #9c1137 !important;
 }
-.btn_main:hover {
-  background: #9c1137;
-  color: #ffffff;
+.btn_2:hover {
+  color: #ffffff !important;
 }
-.btn_view_all:hover {
-  background: transparent;
-  color: #9c1137;
-  border: 1px solid #9c1137;
-}
+
 .carousel-item {
   height: 100vh;
   min-height: 100px;
@@ -78,7 +83,7 @@
 }
 
 .active {
-  color: #9c1137;
+  color: #9c1137 !important;
 }
 
 .nav-link {

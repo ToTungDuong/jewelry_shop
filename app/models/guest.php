@@ -82,6 +82,16 @@ class Guest{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getOrderIDByGuestID($guest_id){
+        $db = DB::getInstance();
+        $query = "SELECT order_id FROM orders WHERE guest_id = :guest_id";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':guest_id', $guest_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function createGuestOrder($guest_id, $total_amount, $items) {
         try {
             $db = DB::getInstance();

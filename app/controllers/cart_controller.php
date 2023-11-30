@@ -155,19 +155,44 @@ class CartController extends BaseController{
         $guest_address = $_POST['guest_address'];
         $guest_id = session_id();
         // // var_dump($_SESSION['cart']);
-        $items = $_SESSION['cart'];
-        $total_amount = 0;
-
-        foreach ($items as $item) {
-            $total_amount += $item['product_quantity'] * $item['product_price'];
+        $errors = [];
+        $regexName = '/^[a-zA-Z\s]+$/u';
+        // Check if Name is empty and format
+        if (empty($guest_name)) {
+          $errors[] = 'Name is required.';
         }
-        $this->guestModel->createGuest($guest_id, $guest_name, $guest_email, $guest_phone, $guest_address);
-        $this->guestModel->createGuestOrder($guest_id, $total_amount, $items);
-        unset($_SESSION['cart']);
-        session_destroy();
-        setcookie(session_name(), '', time() - 3600, '/');
-        $this->render('guest_order_succes');
-
+        else if(!preg_match($regexName, $guest_name)){
+          $errors[] = "Invalid name format";
+        }
+        // Check if Email is empty and format
+        if (empty($guest_email)) {
+          $errors[] = 'Email is required.';
+        }
+        else if (!filter_var($guest_email, FILTER_VALIDATE_EMAIL)) {
+          $errors[] = "Invalid email format";
+        }
+        if (empty($guest_phone)) {
+          $errors[] = 'Phone number is required.';
+        }
+        if (empty($guest_address)) {
+            $errors[] = 'Address number is required.';
+        }
+        if(empty($errors)){
+            $items = $_SESSION['cart'];
+            $total_amount = 0;
+    
+            foreach ($items as $item) {
+                $total_amount += $item['product_quantity'] * $item['product_price'];
+            }
+            $this->guestModel->createGuest($guest_id, $guest_name, $guest_email, $guest_phone, $guest_address);
+            $this->guestModel->createGuestOrder($guest_id, $total_amount, $items);
+            unset($_SESSION['cart']);
+            session_destroy();
+            setcookie(session_name(), '', time() - 3600, '/');
+            $order_id = $this->guestModel->getOrderIDByGuestID($guest_id);
+            $this->render('guest_order_succes', ['order_id' => $order_id]);
+        }
+        $this->render('checkout', ['errors' => $errors]);
 
         // Check if the order is placed by a registered customer or a guest.
     }

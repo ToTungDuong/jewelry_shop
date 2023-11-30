@@ -68,6 +68,15 @@
                         <div class="col-12 px-4">
                             <h1>Order Information</h1>
                         </div>
+                        <?php if (!empty($errors)): ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?php echo $error; ?></li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
                         <div class="col-12">
                             
                             <div class="row mt-3 mx-4"> 
